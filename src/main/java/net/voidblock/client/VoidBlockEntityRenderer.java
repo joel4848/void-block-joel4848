@@ -26,7 +26,7 @@ public class VoidBlockEntityRenderer implements BlockEntityRenderer<VoidBlockEnt
         if (!entity.getBlockState().getValue(VoidBlock.ACTIVE)) return;
 
         // Try endGateway first for better shader compatibility
-        VertexConsumer vb = buffers.getBuffer(RenderType.endGateway());
+        VertexConsumer vb = buffers.getBuffer(RenderType.endPortal());
         renderCube(poseStack, vb, light, overlay);
     }
 
