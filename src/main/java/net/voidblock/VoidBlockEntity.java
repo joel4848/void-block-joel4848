@@ -2,14 +2,13 @@ package net.voidblock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.TheEndPortalBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Arrays;
 
-public class VoidBlockEntity extends BlockEntity {
+public class VoidBlockEntity extends TheEndPortalBlockEntity {
 
     public VoidBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(VoidBlockMod.VOID_BLOCK_ENTITY, blockPos, blockState);
