@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
+import net.voidblock.config.VoidBlockConfig;
 
 public class VoidBlockMod implements ModInitializer {
     public static final String MOD_ID = "voidblock";
@@ -29,6 +30,9 @@ public class VoidBlockMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        // Load config first
+        VoidBlockConfig config = VoidBlockConfig.getInstance();
+
         // Register block
         Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, "void_block"), VOID_BLOCK);
 
@@ -38,6 +42,6 @@ public class VoidBlockMod implements ModInitializer {
         // Register item
         Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, "void_block"), VOID_BLOCK_ITEM);
 
-        System.out.println("Void Block mod initialized!");
+        System.out.println("Void Block mod initialized! Redstone control: " + (config.enableRedstoneControl ? "enabled" : "disabled"));
     }
 }

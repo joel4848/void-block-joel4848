@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.TheEndPortalRenderer;
 import net.voidblock.VoidBlock;
 import net.voidblock.VoidBlockEntity;
+import net.voidblock.config.VoidBlockConfig;
 
 public class VoidBlockEntityRenderer extends TheEndPortalRenderer<VoidBlockEntity> {
 
@@ -20,8 +21,16 @@ public class VoidBlockEntityRenderer extends TheEndPortalRenderer<VoidBlockEntit
                        MultiBufferSource buffers,
                        int light,
                        int overlay) {
-        if (!entity.getBlockState().getValue(VoidBlock.ACTIVE)) return;
-        super.render(entity, partialTick, poseStack, buffers, light, overlay);
+        // If redstone control is disabled, always render the portal effect
+        if (!VoidBlockConfig.getInstance().enableRedstoneControl) {
+            super.render(entity, partialTick, poseStack, buffers, light, overlay);
+            return;
+        }
+
+        // If redstone control is enabled, only render when ACTIVE is true
+        if (entity.getBlockState().getValue(VoidBlock.ACTIVE)) {
+            super.render(entity, partialTick, poseStack, buffers, light, overlay);
+        }
     }
 
     @Override

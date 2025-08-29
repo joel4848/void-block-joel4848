@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "voidblock",
-  "version": "1.21.1-fabric.1",
+  "version": "1.21.1-fabric.1.config",
   "name": "Void Block",
   "description": "Adds a void block that renders with End Gateway effect",
   "authors": [
@@ -20,7 +20,9 @@
       "net.voidblock.client.VoidBlockClient"
     ]
   },
-  "mixins": [],
+  "mixins": [
+    "voidblock.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.16.10",
     "fabric-api": "*",

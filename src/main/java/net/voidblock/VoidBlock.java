@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.voidblock.config.VoidBlockConfig;
 
 public class VoidBlock extends BaseEntityBlock {
     public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
@@ -36,8 +37,12 @@ public class VoidBlock extends BaseEntityBlock {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
-        final boolean powered = ctx.getLevel().hasNeighborSignal(ctx.getClickedPos());
-        return this.defaultBlockState().setValue(ACTIVE, !powered);
+        if (VoidBlockConfig.getInstance().enableRedstoneControl) {
+            final boolean powered = ctx.getLevel().hasNeighborSignal(ctx.getClickedPos());
+            return this.defaultBlockState().setValue(ACTIVE, !powered);
+        } else {
+            return this.defaultBlockState().setValue(ACTIVE, true);
+        }
     }
 
     @Override
@@ -64,7 +69,7 @@ public class VoidBlock extends BaseEntityBlock {
             voidBlockEntity.neighborChanged();
         }
 
-        if (!level.isClientSide) {
+        if (!level.isClientSide && VoidBlockConfig.getInstance().enableRedstoneControl) {
             var hasSignal = level.hasNeighborSignal(pos);
             if (state.getValue(ACTIVE) == hasSignal) {
                 level.setBlock(pos, state.setValue(ACTIVE, !hasSignal), 2);
@@ -89,7 +94,11 @@ public class VoidBlock extends BaseEntityBlock {
 
     @Override
     public RenderShape getRenderShape(BlockState state) {
-        return state.getValue(ACTIVE) ? RenderShape.INVISIBLE : RenderShape.MODEL;
+        if (VoidBlockConfig.getInstance().enableRedstoneControl) {
+            return state.getValue(ACTIVE) ? RenderShape.INVISIBLE : RenderShape.MODEL;
+        } else {
+            return RenderShape.INVISIBLE;
+        }
     }
 
     @Override
