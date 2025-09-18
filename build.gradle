@@ -52,7 +52,3 @@ jar {
         rename { "${it}_${archivesBaseName}"}
     }
 }
-
-fabricApi {
-    configureDataGeneration()
-}
