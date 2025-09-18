@@ -1,0 +1,16 @@
+# Ignore Gradle build output
+/build/
+.gradle/
+
+# IntelliJ IDEA project files
+/.idea/
+
+# Run directory (Fabric/Forge dev runtime)
+run/
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
