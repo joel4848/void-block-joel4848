@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "voidblock:void_block",
+    "id": "voidblock:void_block",
     "count": 8
   }
 }
