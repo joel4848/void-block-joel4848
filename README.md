@@ -1,6 +1,8 @@
 
 # Void Block Fabric 1.21.1
 
+Available on [Modrinth](https://modrinth.com/mod/void-block-fabric-1.21.1) and [Curseforge](https://www.curseforge.com/minecraft/mc-mods/void-block-fabric)
+
 <p align='justify'>Simply adds a block that renders the void portal effect. Works for Fabric 1.21.1 and works with shaders! I will almost certainly never, ever be updating or changing this mod, because I'm genuinely surprised it works at all as it is, and I'm terrified that if I change ANYTHING inside it it'll break. (As in, I'm scared enough just adding this readme and pushing it)</p>
 
 <p align='justify'>Required on both server and client. No dependencies.</p>
